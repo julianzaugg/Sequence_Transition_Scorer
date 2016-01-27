@@ -26,3 +26,4 @@ Output files:
 Additional Notes:
 * Currently only positions that change in each transition are scored. So if sequence A and B vary by 10 amino acids, than their score will be based on these 10 positions. However if comparing sequence A and sequence C we observed the difference at only 5 locations, the score will be based on these 5 locations.
 * Make sure sequence names in all files are identical.
+* Any positions that are a gap are ignored for the specific transition they are observed in.
