@@ -110,8 +110,8 @@ def _process_arguments(my_parser, my_args):
         for node in INPUT_TREE:
             node_seq = INPUT_SEQS_DICT[node.label]
             for child in node.children:
-                print "Scoring %s - %s transition" % (node_seq.name, child_seq.name)
                 child_seq = INPUT_SEQS_DICT[child.label]
+                print "Scoring %s - %s transition" % (node_seq.name, child_seq.name)
                 result_string_list, mean_score = _get_string_result((node_seq, child_seq), POSITIONS)
                 all_result_strings += result_string_list
                 all_mean_scores[node_seq.name][child_seq.name] = mean_score
@@ -142,10 +142,10 @@ if __name__ == "__main__":
             containing position numbers. Assumes indexing starts at 1. If not provided, all positions will be scanned', required=False)
     parser.add_argument('-seq_names', '--seq_names_file', help='Input sequence transitions of interest', required=False)
 
-    args = parser.parse_args()
+    # args = parser.parse_args()
     # args = parser.parse_args(["-i","Data/seqs.txt" ,"--scale_file", "Data/scale.txt", "-o" ,"Data/", "-seq_names", "Data/temp.txt", "-p", "Data/positions.txt", "--tree_file", "Data/tree.txt"])
     # args = parser.parse_args(["-i","Data/seqs.txt" ,"--scale_file", "Data/scale.txt", "-o" ,"Data/", "-seq_names", "Data/temp.txt", "-p", "Data/positions.txt"])
-    # args = parser.parse_args(["-i","Data/seqs.txt" ,"--scale_file", "Data/scale.txt", "-o" ,"Data/", "-p", "Data/positions.txt","--tree_file", "Data/tree.txt"])
+    args = parser.parse_args(["-i","Data/seqs.txt" ,"--scale_file", "Data/scale.txt", "-o" ,"Data/", "-p", "Data/positions.txt","--tree_file", "Data/tree.txt"])
 
     # args = parser.parse_args(["-i", "Data/CYP3_joint_reconstruction.txt", "--output_location", "Data/", "--scale_file", "Data/TP_all_residues.txt", "--seq_names_file", "Data/Transition.txt"])
     _process_arguments(parser, args)
