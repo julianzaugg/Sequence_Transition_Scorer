@@ -55,6 +55,7 @@ def _dir_check(directory):
 def _process_arguments(my_parser, my_args):
     global INPUT_SEQS, INPUT_TREE, SEQ_TRANSITIONS,INPUT_SEQS_DICT, POSITIONS, SCALE
     OUT_LOCATION = my_args.output_location
+    _dir_check(OUT_LOCATION)
 
     # Load the sequences
     INPUT_SEQS = read_fasta_file(my_args.input_seqs, Protein_Alphabet)
@@ -74,7 +75,7 @@ def _process_arguments(my_parser, my_args):
                     raise StandardError("The sequence name %s defined in the transition file does not match any of the input sequences" % name)
                 pair_seqs.append(INPUT_SEQS_DICT[name])
             SEQ_TRANSITIONS.append(pair_seqs)
-    if not my_args.tree_file and my_args.seq_names_file:
+    if not my_args.tree_file and not my_args.seq_names_file:
         print "No Tree or transtion file provided, will compare all sequences in input file"
         for seq in INPUT_SEQS:
             for seq2 in INPUT_SEQS:
@@ -90,7 +91,7 @@ def _process_arguments(my_parser, my_args):
     
     # Load the scale
     with open(my_args.scale_file, 'r') as fh:
-        data = [[x.split("\t") for x in line.split("\r")] for line in fh.readlines()][0]
+        data = [x.split("\t") for line in fh.readlines() for x in line.strip().split("\r")]
         data = [[x,float(y)] for x,y in data]
         SCALE = dict(data)
 
@@ -120,6 +121,7 @@ def _process_arguments(my_parser, my_args):
         print >> fh, header
         for r_string in all_result_strings:
             print >> fh, r_string
+            
     with open(my_args.output_location + "mean_results.txt", 'w') as fh:
         header = "Seq1_name\tSeq2_name\tMean_score"
         print >> fh, header
@@ -144,5 +146,7 @@ if __name__ == "__main__":
     # args = parser.parse_args(["-i","Data/seqs.txt" ,"--scale_file", "Data/scale.txt", "-o" ,"Data/", "-seq_names", "Data/temp.txt", "-p", "Data/positions.txt", "--tree_file", "Data/tree.txt"])
     # args = parser.parse_args(["-i","Data/seqs.txt" ,"--scale_file", "Data/scale.txt", "-o" ,"Data/", "-seq_names", "Data/temp.txt", "-p", "Data/positions.txt"])
     # args = parser.parse_args(["-i","Data/seqs.txt" ,"--scale_file", "Data/scale.txt", "-o" ,"Data/", "-p", "Data/positions.txt","--tree_file", "Data/tree.txt"])
+
+    # args = parser.parse_args(["-i", "Data/CYP3_joint_reconstruction.txt", "--output_location", "Data/", "--scale_file", "Data/TP_all_residues.txt", "--seq_names_file", "Data/Transition.txt"])
     _process_arguments(parser, args)
 
