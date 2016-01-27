@@ -9,7 +9,7 @@ To run, open the commandline and type - `python sts.py PARAMETERS`
 Required parameters:
 * Input sequence file. Must be Fasta format.
 * Output results location. Any directory to save results to.
-* Scale file. Must be tab-delimited file with two columns. First column must be one of the 20 standard amino acids (Capital letter). Second column must be the integer score.
+* Scale file. Must be tab-delimited file with two columns. First column must be all of the 20 standard amino acids (Capital letter). Second column must be the integer score.
 
 Optional parameters:
 * Positions file. Single column of position number to limit comparison to. Assumes indexing starts at 1.
