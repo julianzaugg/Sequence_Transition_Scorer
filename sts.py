@@ -125,9 +125,9 @@ def _process_arguments(my_parser, my_args):
     with open(my_args.output_location + "mean_results.txt", 'w') as fh:
         header = "Seq1_name\tSeq2_name\tMean_score"
         print >> fh, header
-        for k,v in all_mean_scores.iteritems():
-            for k2,v2 in v.iteritems():
-                print >> fh,"%s\t%s\t%f" % (k, k2, v2)
+        for seq1_name, seq1_mean_scores_dict in all_mean_scores.iteritems():
+            for seq2_name, seq1_seq2_mean_score in seq1_mean_scores_dict.iteritems():
+                print >> fh,"%s\t%s\t%f" % (seq1_name, seq2_name, seq1_seq2_mean_score)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Description to be added')
@@ -136,7 +136,6 @@ if __name__ == "__main__":
     parser.add_argument('-s', '--scale_file', help='Input scale file, should be tab delimited with first column\
             containing the amino acid and the second column the score', required=True)
     parser.add_argument('-o', '--output_location', help='Output location, where to save the results', required=True)
-
     parser.add_argument('-t', '--tree_file', help='Input tree file, must be in newick format', required=False)
     parser.add_argument('-p', '--positions_file', help='Input positions file, if provided, should be a single column\
             containing position numbers. Assumes indexing starts at 1. If not provided, all positions will be scanned', required=False)
