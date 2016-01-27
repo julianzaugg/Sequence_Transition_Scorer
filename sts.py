@@ -142,10 +142,10 @@ if __name__ == "__main__":
             containing position numbers. Assumes indexing starts at 1. If not provided, all positions will be scanned', required=False)
     parser.add_argument('-seq_names', '--seq_names_file', help='Input sequence transitions of interest', required=False)
 
-    # args = parser.parse_args()
+    args = parser.parse_args()
     # args = parser.parse_args(["-i","Data/seqs.txt" ,"--scale_file", "Data/scale.txt", "-o" ,"Data/", "-seq_names", "Data/temp.txt", "-p", "Data/positions.txt", "--tree_file", "Data/tree.txt"])
     # args = parser.parse_args(["-i","Data/seqs.txt" ,"--scale_file", "Data/scale.txt", "-o" ,"Data/", "-seq_names", "Data/temp.txt", "-p", "Data/positions.txt"])
-    args = parser.parse_args(["-i","Data/seqs.txt" ,"--scale_file", "Data/scale.txt", "-o" ,"Data/", "-p", "Data/positions.txt","--tree_file", "Data/tree.txt"])
+    # args = parser.parse_args(["-i","Data/seqs.txt" ,"--scale_file", "Data/scale.txt", "-o" ,"Data/", "-p", "Data/positions.txt","--tree_file", "Data/tree.txt"])
 
     # args = parser.parse_args(["-i", "Data/CYP3_joint_reconstruction.txt", "--output_location", "Data/", "--scale_file", "Data/TP_all_residues.txt", "--seq_names_file", "Data/Transition.txt"])
     _process_arguments(parser, args)
