@@ -13,10 +13,10 @@ Required parameters:
 
 Optional parameters:
 * Positions file. Single column of position number to limit comparison to. Assumes indexing starts at 1.
-* Tree file. Must be in newick format. If provided, only parent-child transititions are looked at.
+* Tree file. Must be in newick format. If provided, only parent-child transitions are looked at.
 * Sequence names file. Two-column tab-delimited file, where each column must include sequence names for sequences in the input sequence file. Pairs of names provided here indicate transitions of interest and limits the comparisons to these sequences. If this file and a tree file is provided, only transitions in this file will be used.
 
-If no tree or sequence name file is provided, all sequences will be compared to each other.
+If no tree or sequence name file is provided, all sequences will be compared tot each other.
 If no positions file is provided, all positions will be compared.
 
 Output files:
