@@ -76,7 +76,7 @@ def _process_arguments(my_parser, my_args):
                 pair_seqs.append(INPUT_SEQS_DICT[name])
             SEQ_TRANSITIONS.append(pair_seqs)
     if not my_args.tree_file and not my_args.seq_names_file:
-        print "No Tree or transtion file provided, will compare all sequences in input file"
+        print "No Tree or transition file provided, will compare all sequences in input file"
         for seq in INPUT_SEQS:
             for seq2 in INPUT_SEQS:
                 if seq != seq2:
