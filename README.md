@@ -1,9 +1,10 @@
 # Sequence_Transition_Scorer
-Score transitions between protein sequences using custom amino acid scale
 
 REQUIRES BIOPYTHON
 
 Simple command line program for comparing protein sequences and scoring their differences using a custom amino acid scale.
+
+To run, open the commandline and type - `python sts.py PARAMETERS`
 
 Required parameters:
 * Input sequence file. Must be Fasta format.
@@ -12,7 +13,7 @@ Required parameters:
 
 Optional parameters:
 * Positions file. Single column of position number to limit comparison to. Assumes indexing starts at 1.
-* Tree file. Must be in newick format. If provided, only parent-child transititions are looked at.
+* Tree file. Must be in newick format. If provided, only parent-child transitions are looked at.
 * Sequence names file. Two-column tab-delimited file, where each column must include sequence names for sequences in the input sequence file. Pairs of names provided here indicate transitions of interest and limits the comparisons to these sequences. If this file and a tree file is provided, only transitions in this file will be used.
 
 If no tree or sequence name file is provided, all sequences will be compared to each other.
